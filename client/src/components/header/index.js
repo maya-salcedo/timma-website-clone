@@ -2,7 +2,11 @@ import React from 'react';
 import { Link as ReachRouterLink } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faMapMarkerAlt,
+  faBars,
+  faUserCircle,
+} from '@fortawesome/free-solid-svg-icons';
 
 import {
   Container,
@@ -14,6 +18,8 @@ import {
   ColumnLeft,
   SubRow,
   ButtonLinkDarkBackground,
+  RowMobile,
+  Icon,
 } from './styles/header';
 
 export default function Header({ children, ...restProps }) {
@@ -47,7 +53,7 @@ Header.Logo = function HeaderLogo({ to, ...restProps }) {
 Header.Location = function HeaderLocation({ children, ...restProps }) {
   return (
     <Location {...restProps}>
-      <FontAwesomeIcon icon={faMapMarkerAlt} className="icon" /> {children}
+      <FontAwesomeIcon icon={faMapMarkerAlt} /> {children}
     </Location>
   );
 };
@@ -65,4 +71,27 @@ Header.ButtonLinkDarkBackground = function HeaderButtonLinkDarkBackground({
       {children}
     </ButtonLinkDarkBackground>
   );
+};
+
+Header.HamburgerMenu = function HeaderHamburgerMenu({
+  children,
+  ...restProps
+}) {
+  return (
+    <Icon {...restProps}>
+      <FontAwesomeIcon icon={faBars} className="icon" />
+    </Icon>
+  );
+};
+
+Header.UserIcon = function HeaderHamburgerMenu({ children, ...restProps }) {
+  return (
+    <Icon {...restProps}>
+      <FontAwesomeIcon icon={faUserCircle} className="icon" />
+    </Icon>
+  );
+};
+
+Header.RowMobile = function HeaderRowMobile({ children, ...restProps }) {
+  return <RowMobile {...restProps}>{children}</RowMobile>;
 };

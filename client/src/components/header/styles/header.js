@@ -87,3 +87,16 @@ export const ButtonLinkDarkBackground = styled(ButtonLink)`
   border-radius: 12px;
   padding: 0.4rem 0.9rem;
 `;
+
+export const RowMobile = styled(Row)`
+  border-color: #fff;
+  background-color: #fff;
+`;
+
+export const Icon = styled.div`
+  padding: 0.8rem;
+
+  .icon {
+    font-size: 1.2rem;
+  }
+`;
