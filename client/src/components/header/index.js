@@ -1,38 +1,68 @@
 import React from 'react';
 import { Link as ReachRouterLink } from 'react-router-dom';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+
 import {
   Container,
-  Base,
-  Frame,
   Logo,
   Location,
   ButtonLink,
+  Row,
+  Column,
+  ColumnLeft,
+  SubRow,
+  ButtonLinkDarkBackground,
 } from './styles/header';
 
-export default function Header({ bg = true, children, ...restProps }) {
-  return bg ? <Container {...restProps}>{children}</Container> : children;
+export default function Header({ children, ...restProps }) {
+  return <Container {...restProps}>{children}</Container>;
 }
 
-Header.Base = function HeaderBase({ children, ...restProps }) {
-  return <Base {...restProps}>{children}</Base>;
+Header.Row = function HeaderRow({ children, ...restProps }) {
+  return <Row {...restProps}>{children}</Row>;
 };
 
-Header.Frame = function HeaderFrame({ children, ...restProps }) {
-  return <Frame {...restProps}>{children}</Frame>;
+Header.SubRow = function HeaderSubRow({ children, ...restProps }) {
+  return <SubRow {...restProps}>{children}</SubRow>;
+};
+
+Header.Column = function HeaderColumn({ children, ...restProps }) {
+  return <Column {...restProps}>{children}</Column>;
+};
+
+Header.ColumnLeft = function HeaderColumnLeft({ children, ...restProps }) {
+  return <ColumnLeft {...restProps}>{children}</ColumnLeft>;
 };
 
 Header.Logo = function HeaderLogo({ to, ...restProps }) {
   return (
     <ReachRouterLink to={to}>
-      <Logo {...restProps} />;
+      <Logo {...restProps} />
     </ReachRouterLink>
   );
 };
 
 Header.Location = function HeaderLocation({ children, ...restProps }) {
-  return <Location {...restProps}>{children}</Location>;
+  return (
+    <Location {...restProps}>
+      <FontAwesomeIcon icon={faMapMarkerAlt} className="icon" /> {children}
+    </Location>
+  );
 };
 
 Header.ButtonLink = function HeaderButtonLink({ children, ...restProps }) {
   return <ButtonLink {...restProps}>{children}</ButtonLink>;
+};
+
+Header.ButtonLinkDarkBackground = function HeaderButtonLinkDarkBackground({
+  children,
+  ...restProps
+}) {
+  return (
+    <ButtonLinkDarkBackground {...restProps}>
+      {children}
+    </ButtonLinkDarkBackground>
+  );
 };
