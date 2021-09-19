@@ -1,38 +1,117 @@
 import React from 'react';
 import { Link as ReachRouterLink } from 'react-router-dom';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faMapMarkerAlt,
+  faBars,
+  faUserCircle,
+} from '@fortawesome/free-solid-svg-icons';
+
 import {
   Container,
-  Base,
-  Frame,
   Logo,
   Location,
   ButtonLink,
+  Row,
+  Column,
+  ColumnLeft,
+  SubRow,
+  ButtonLinkDarkBackground,
+  RowMobile,
+  Icon,
+  Toggle,
+  ToggleSwitch,
+  ToggleText,
 } from './styles/header';
 
-export default function Header({ bg = true, children, ...restProps }) {
-  return bg ? <Container {...restProps}>{children}</Container> : children;
+export default function Header({ children, ...restProps }) {
+  return <Container {...restProps}>{children}</Container>;
 }
 
-Header.Base = function HeaderBase({ children, ...restProps }) {
-  return <Base {...restProps}>{children}</Base>;
+Header.Row = function HeaderRow({ children, ...restProps }) {
+  return <Row {...restProps}>{children}</Row>;
 };
 
-Header.Frame = function HeaderFrame({ children, ...restProps }) {
-  return <Frame {...restProps}>{children}</Frame>;
+Header.SubRow = function HeaderSubRow({ children, ...restProps }) {
+  return <SubRow {...restProps}>{children}</SubRow>;
+};
+
+Header.Column = function HeaderColumn({ children, ...restProps }) {
+  return <Column {...restProps}>{children}</Column>;
+};
+
+Header.ColumnLeft = function HeaderColumnLeft({ children, ...restProps }) {
+  return <ColumnLeft {...restProps}>{children}</ColumnLeft>;
 };
 
 Header.Logo = function HeaderLogo({ to, ...restProps }) {
   return (
     <ReachRouterLink to={to}>
-      <Logo {...restProps} />;
+      <Logo {...restProps} />
     </ReachRouterLink>
   );
 };
 
 Header.Location = function HeaderLocation({ children, ...restProps }) {
-  return <Location {...restProps}>{children}</Location>;
+  return (
+    <Location {...restProps}>
+      <FontAwesomeIcon icon={faMapMarkerAlt} /> {children}
+    </Location>
+  );
 };
 
 Header.ButtonLink = function HeaderButtonLink({ children, ...restProps }) {
   return <ButtonLink {...restProps}>{children}</ButtonLink>;
+};
+
+Header.ButtonLinkDarkBackground = function HeaderButtonLinkDarkBackground({
+  children,
+  ...restProps
+}) {
+  return (
+    <ButtonLinkDarkBackground {...restProps}>
+      {children}
+    </ButtonLinkDarkBackground>
+  );
+};
+
+Header.HamburgerMenu = function HeaderHamburgerMenu({
+  children,
+  ...restProps
+}) {
+  return (
+    <Icon {...restProps}>
+      <FontAwesomeIcon icon={faBars} className="icon" />
+    </Icon>
+  );
+};
+
+Header.UserIcon = function HeaderHamburgerMenu({ children, ...restProps }) {
+  return (
+    <Icon {...restProps}>
+      <FontAwesomeIcon icon={faUserCircle} className="icon" />
+    </Icon>
+  );
+};
+
+Header.RowMobile = function HeaderRowMobile({ children, ...restProps }) {
+  return <RowMobile {...restProps}>{children}</RowMobile>;
+};
+
+Header.Toggle = function HeaderToggle({ children, ...restProps }) {
+  return <Toggle {...restProps}>{children}</Toggle>;
+};
+
+Header.ToggleText = function HeaderToggleText({ children, ...restProps }) {
+  return <ToggleText {...restProps}>{children}</ToggleText>;
+};
+
+Header.ToggleSwitch = function HeaderToggleSwitch({ ...restProps }) {
+  return (
+    <ToggleSwitch {...restProps}>
+      <input type="checkbox" id="darkmodetoggle" {...restProps} />
+      <label for="darkmodetoggle"></label>
+    </ToggleSwitch>
+  );
 };
