@@ -20,6 +20,9 @@ import {
   ButtonLinkDarkBackground,
   RowMobile,
   Icon,
+  Toggle,
+  ToggleSwitch,
+  ToggleText,
 } from './styles/header';
 
 export default function Header({ children, ...restProps }) {
@@ -94,4 +97,21 @@ Header.UserIcon = function HeaderHamburgerMenu({ children, ...restProps }) {
 
 Header.RowMobile = function HeaderRowMobile({ children, ...restProps }) {
   return <RowMobile {...restProps}>{children}</RowMobile>;
+};
+
+Header.Toggle = function HeaderToggle({ children, ...restProps }) {
+  return <Toggle {...restProps}>{children}</Toggle>;
+};
+
+Header.ToggleText = function HeaderToggleText({ children, ...restProps }) {
+  return <ToggleText {...restProps}>{children}</ToggleText>;
+};
+
+Header.ToggleSwitch = function HeaderToggleSwitch({ ...restProps }) {
+  return (
+    <ToggleSwitch {...restProps}>
+      <input type="checkbox" id="darkmodetoggle" {...restProps} />
+      <label for="darkmodetoggle"></label>
+    </ToggleSwitch>
+  );
 };

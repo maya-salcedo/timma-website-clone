@@ -47,7 +47,10 @@ export function HeaderContainer() {
       )}
 
       <Header.SubRow>
-        <p>Dark mode</p>
+        <Header.Toggle>
+          <Header.ToggleText>Dark mode</Header.ToggleText>
+          <Header.ToggleSwitch />
+        </Header.Toggle>
       </Header.SubRow>
     </Header>
   );
